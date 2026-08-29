@@ -16,7 +16,7 @@
   <p class="lead">依清單順序播放，音檔只在這台裝置上處理。</p>
   <section class="card">
     <label class="import">＋ 匯入 MP3<input id="picker" type="file" accept="audio/mpeg,.mp3" multiple></label>
-    <p class="note">可一次選多首。按住歌曲右側的「≡」上下拖曳即可調整順序。</p>
+    <p class="note">匯入時會依英文字母與數字自然排序；也可按住右側「≡」上下拖曳微調。</p>
     <p id="status" class="status" role="status"></p>
     <ol id="list"><li class="empty">尚未匯入歌曲</li></ol>
     <div class="player">
@@ -40,7 +40,7 @@ document.addEventListener('pointermove',e=>{if(!draggedTrack)return;e.preventDef
 function finishDrag(){if(!draggedTrack)return;draggedTrack=null;dragIndex=-1;document.body.style.overflow='';render();setStatus('播放順序已更新','ok')}
 document.addEventListener('pointerup',finishDrag);document.addEventListener('pointercancel',finishDrag);
 function remove(i){const wasCurrent=i===currentIndex;URL.revokeObjectURL(tracks[i].url);tracks.splice(i,1);if(!tracks.length){audio.pause();audio.removeAttribute('src');currentIndex=0;now.textContent='尚未準備音訊';setControls(false)}else{currentIndex=Math.min(currentIndex,tracks.length-1);if(wasCurrent)loadTrack(currentIndex,false)}render();setStatus(tracks.length?`已載入 ${tracks.length} 首 MP3`:'')}
-picker.onchange=()=>{const wasEmpty=!tracks.length;tracks.push(...[...picker.files].map(file=>({file,url:URL.createObjectURL(file)})));picker.value='';if(wasEmpty)loadTrack(0,false);render();setStatus(`已載入 ${tracks.length} 首 MP3，將依清單順序播放`,'ok')};
+picker.onchange=()=>{const wasEmpty=!tracks.length,active=tracks[currentIndex];tracks.push(...[...picker.files].map(file=>({file,url:URL.createObjectURL(file)})));tracks.sort((a,b)=>a.file.name.localeCompare(b.file.name,'en',{numeric:true,sensitivity:'base'}));picker.value='';if(wasEmpty)loadTrack(0,false);else currentIndex=Math.max(0,tracks.indexOf(active));render();setStatus(`已依英文字母與數字排序，共 ${tracks.length} 首 MP3`,'ok')};
 function setControls(on){play.disabled=!on;seek.disabled=!on;$('#previous').disabled=$('#next').disabled=!on}
 async function loadTrack(index,autoPlay){if(!tracks[index])return;const wasPlaying=!audio.paused;currentIndex=index;audio.src=tracks[index].url;now.textContent=tracks[index].file.name;render();updateMedia();setControls(true);if(autoPlay||wasPlaying)try{await audio.play()}catch{setStatus('請按播放鍵以允許音訊。')}}
 function next(){if(currentIndex<tracks.length-1)loadTrack(currentIndex+1,true);else{audio.pause();audio.currentTime=0}}
