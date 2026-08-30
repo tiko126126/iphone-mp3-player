@@ -5,54 +5,81 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="theme-color" content="#101014">
-  <title>我的 MP3 播放器</title>
+  <title>iPhone 背景播放器</title>
   <style>
-    :root{color-scheme:dark;--bg:#101014;--card:#1c1c22;--muted:#aaaab5;--line:#303039;--accent:#a8ff60;--danger:#ff7373}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -20%,#34343e 0,#15151a 42%,var(--bg) 75%);color:#f7f7f8;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}main{max-width:680px;margin:auto;padding:calc(env(safe-area-inset-top) + 28px) 18px calc(env(safe-area-inset-bottom) + 32px)}h1{font-size:30px;letter-spacing:-.04em;margin:0 0 6px}.lead{color:var(--muted);margin:0 0 24px}.card{background:rgba(28,28,34,.92);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 18px 50px #0004}.import{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--accent);color:#101014;font-weight:750;border:0;border-radius:15px;padding:15px;width:100%;cursor:pointer}input[type=file]{display:none}.note,.status{color:var(--muted);font-size:13px;margin:12px 2px 0}.status{min-height:20px}.status.busy{color:#f6d36c}.status.ok{color:var(--accent)}ol{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:9px}.track{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:9px;background:#24242b;border:1px solid transparent;border-radius:14px;padding:10px;transition:transform .12s,opacity .12s}.track.active{border-color:#7aaa50}.track.dragging{opacity:.55;transform:scale(.98)}.num{color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}.name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.size{color:var(--muted);font-size:12px}.actions{display:flex;gap:5px}.icon{width:36px;height:36px;border:0;border-radius:10px;background:#35353e;color:#fff;font-size:17px;cursor:pointer}.icon:disabled{opacity:.35}.drag{cursor:grab;touch-action:none;font-size:21px;line-height:1}.drag:active{cursor:grabbing}.remove{color:var(--danger)}.player{margin-top:18px;border-top:1px solid var(--line);padding-top:18px}.now{font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:8px}input[type=range]{width:100%;accent-color:var(--accent)}.controls{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:12px}.play{width:64px;height:64px;border:0;border-radius:50%;background:#fff;color:#111;font-size:27px;cursor:pointer}.secondary{border:0;border-radius:12px;padding:10px 13px;background:#34343d;color:#fff;cursor:pointer}.secondary:disabled,.play:disabled{opacity:.4}.empty{text-align:center;color:var(--muted);padding:28px 8px 12px}@media(max-width:430px){main{padding-left:14px;padding-right:14px}.track{grid-template-columns:28px minmax(0,1fr) auto}.icon{width:34px}}
+    :root{color-scheme:dark;--bg:#101014;--card:#1c1c22;--muted:#aaaab5;--line:#303039;--accent:#a8ff60;--danger:#ff7373}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -20%,#34343e 0,#15151a 42%,var(--bg) 75%);color:#f7f7f8;font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}main{max-width:680px;margin:auto;padding:calc(env(safe-area-inset-top) + 28px) 18px calc(env(safe-area-inset-bottom) + 32px)}h1{font-size:30px;letter-spacing:-.04em;margin:0 0 6px}.lead{color:var(--muted);margin:0 0 24px}.card{background:rgba(28,28,34,.92);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 18px 50px #0004;margin-bottom:16px}.section-title{font-size:18px;font-weight:750;margin:0 0 12px}.row{display:flex;gap:9px}.url{flex:1;min-width:0;background:#24242b;border:1px solid var(--line);color:#fff;border-radius:13px;padding:13px;font-size:15px}.btn,.import{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--accent);color:#101014;font-weight:750;border:0;border-radius:13px;padding:13px 15px;cursor:pointer}.btn.secondary{background:#34343d;color:#fff}.btn:disabled{opacity:.4}.note,.status{color:var(--muted);font-size:13px;margin:10px 2px 0}.status{min-height:20px}.status.busy{color:#f6d36c}.status.ok{color:var(--accent)}.status.err{color:var(--danger)}input[type=file]{display:none}.player{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}.now{font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.time{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:8px}input[type=range]{width:100%;accent-color:var(--accent)}.controls{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:12px}.play{width:64px;height:64px;border:0;border-radius:50%;background:#fff;color:#111;font-size:27px;cursor:pointer}.small{font-size:12px;color:var(--muted);word-break:break-all}.divider{height:1px;background:var(--line);margin:16px 0}.import{width:100%}@media(max-width:520px){.row{flex-direction:column}.row .btn{width:100%}}
   </style>
 </head>
 <body>
 <main>
-  <h1>我的 MP3 播放器</h1>
-  <p class="lead">依清單順序播放，音檔只在這台裝置上處理。</p>
+  <h1>iPhone 背景播放器</h1>
+  <p class="lead">實驗版：把 Kemomimi Refle 頁面或 HLS 串流交給 iPhone 原生播放器，測試鎖屏後是否能繼續播放。</p>
+
   <section class="card">
-    <label class="import">＋ 匯入 MP3<input id="picker" type="file" accept="audio/mpeg,.mp3" multiple></label>
-    <p class="note">匯入時會依英文字母與數字自然排序；也可按住右側「≡」上下拖曳微調。</p>
+    <h2 class="section-title">Kemomimi Refle 網址</h2>
+    <div class="row">
+      <input id="pageUrl" class="url" inputmode="url" autocomplete="off" placeholder="https://kemomimirefle.net/video/...">
+      <button id="extract" class="btn">解析並播放</button>
+    </div>
+    <p class="note">會先嘗試直接讀取頁面並尋找 .m3u8 或 session_id。若網站擋跨網域讀取，下面仍可直接貼 HLS 網址測試。</p>
     <p id="status" class="status" role="status"></p>
-    <ol id="list"><li class="empty">尚未匯入歌曲</li></ol>
+
+    <div class="divider"></div>
+    <h2 class="section-title">直接貼 HLS / 音訊網址</h2>
+    <div class="row">
+      <input id="mediaUrl" class="url" inputmode="url" autocomplete="off" placeholder="https://.../index.m3u8?session_id=...">
+      <button id="loadUrl" class="btn secondary">載入</button>
+    </div>
+    <p id="resolved" class="small"></p>
+
     <div class="player">
-      <div id="now" class="now">尚未準備音訊</div>
+      <div id="now" class="now">尚未載入</div>
       <input id="seek" type="range" min="0" max="1" value="0" step="0.01" disabled aria-label="播放進度">
       <div class="time"><span id="elapsed">0:00</span><span id="duration">0:00</span></div>
-      <div style="display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;margin-top:14px"><span aria-hidden="true">🔈</span><input id="volume" type="range" min="0" max="1" value="1" step="0.05" aria-label="音量"><span id="volumeValue" style="color:var(--muted);font-size:13px;min-width:38px;text-align:right">100%</span></div>
-      <div class="controls"><button id="previous" class="secondary" disabled>⏮ 上一首</button><button id="play" class="play" disabled aria-label="播放">▶</button><button id="next" class="secondary" disabled>下一首 ⏭</button></div>
+      <div class="controls"><button id="back" class="btn secondary" disabled>－15 秒</button><button id="play" class="play" disabled aria-label="播放">▶</button><button id="forward" class="btn secondary" disabled>＋15 秒</button></div>
     </div>
+  </section>
+
+  <section class="card">
+    <h2 class="section-title">也可以播放本機 MP3</h2>
+    <label class="import">匯入 MP3<input id="picker" type="file" accept="audio/*,.mp3,.m4a" multiple></label>
+    <p class="note">這部分仍然只在你的 iPhone 本機處理。</p>
   </section>
 </main>
 <audio id="audio" playsinline preload="metadata"></audio>
 <script>
-const $=s=>document.querySelector(s),picker=$('#picker'),list=$('#list'),statusEl=$('#status'),audio=$('#audio'),play=$('#play'),seek=$('#seek'),now=$('#now');
-let tracks=[],currentIndex=0,draggedTrack=null,dragIndex=-1;
+const $=s=>document.querySelector(s),audio=$('#audio'),play=$('#play'),seek=$('#seek'),statusEl=$('#status');
 const fmt=s=>!Number.isFinite(s)?'0:00':`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 function setStatus(text,cls=''){statusEl.textContent=text;statusEl.className='status '+cls}
-function render(){list.innerHTML='';if(!tracks.length){list.innerHTML='<li class="empty">尚未匯入歌曲</li>';return}tracks.forEach((t,i)=>{const li=document.createElement('li');li.className='track'+(i===currentIndex?' active':'')+(t===draggedTrack?' dragging':'');li.dataset.index=i;li.innerHTML=`<span class="num">${i+1}</span><span><div class="name"></div><div class="size">${(t.file.size/1048576).toFixed(1)} MB</div></span><span class="actions"><button class="icon drag" aria-label="拖曳調整順序">≡</button><button class="icon remove" aria-label="移除">×</button></span>`;li.querySelector('.name').textContent=t.file.name;li.querySelector('.name').onclick=()=>loadTrack(i,true);li.querySelector('.drag').onpointerdown=e=>startDrag(e,i);li.querySelector('.remove').onclick=()=>remove(i);list.append(li)})}
-function startDrag(e,i){e.preventDefault();dragIndex=i;draggedTrack=tracks[i];document.body.style.overflow='hidden';render()}
-document.addEventListener('pointermove',e=>{if(!draggedTrack)return;e.preventDefault();const row=document.elementFromPoint(e.clientX,e.clientY)?.closest('.track');if(!row)return;const target=Number(row.dataset.index);if(target===dragIndex||!Number.isInteger(target))return;const active=tracks[currentIndex];const [item]=tracks.splice(dragIndex,1);tracks.splice(target,0,item);dragIndex=target;currentIndex=Math.max(0,tracks.indexOf(active));render()},{passive:false});
-function finishDrag(){if(!draggedTrack)return;draggedTrack=null;dragIndex=-1;document.body.style.overflow='';render();setStatus('播放順序已更新','ok')}
-document.addEventListener('pointerup',finishDrag);document.addEventListener('pointercancel',finishDrag);
-function remove(i){const wasCurrent=i===currentIndex;URL.revokeObjectURL(tracks[i].url);tracks.splice(i,1);if(!tracks.length){audio.pause();audio.removeAttribute('src');currentIndex=0;now.textContent='尚未準備音訊';setControls(false)}else{currentIndex=Math.min(currentIndex,tracks.length-1);if(wasCurrent)loadTrack(currentIndex,false)}render();setStatus(tracks.length?`已載入 ${tracks.length} 首 MP3`:'')}
-picker.onchange=()=>{const wasEmpty=!tracks.length,active=tracks[currentIndex];tracks.push(...[...picker.files].map(file=>({file,url:URL.createObjectURL(file)})));tracks.sort((a,b)=>a.file.name.localeCompare(b.file.name,'en',{numeric:true,sensitivity:'base'}));picker.value='';if(wasEmpty)loadTrack(0,false);else currentIndex=Math.max(0,tracks.indexOf(active));render();setStatus(`已依英文字母與數字排序，共 ${tracks.length} 首 MP3`,'ok')};
-function setControls(on){play.disabled=!on;seek.disabled=!on;$('#previous').disabled=$('#next').disabled=!on}
-async function loadTrack(index,autoPlay){if(!tracks[index])return;const wasPlaying=!audio.paused;currentIndex=index;audio.src=tracks[index].url;now.textContent=tracks[index].file.name;render();updateMedia();setControls(true);if(autoPlay||wasPlaying)try{await audio.play()}catch{setStatus('請按播放鍵以允許音訊。')}}
-function next(){if(currentIndex<tracks.length-1)loadTrack(currentIndex+1,true);else{audio.pause();audio.currentTime=0}}
-function previous(){if(audio.currentTime>3)audio.currentTime=0;else if(currentIndex>0)loadTrack(currentIndex-1,true)}
-play.onclick=async()=>{try{if(audio.paused)await audio.play();else audio.pause()}catch{setStatus('請再按一次播放以允許音訊。')}};
-audio.onended=next;audio.onplay=()=>{play.textContent='❚❚';play.setAttribute('aria-label','暫停')};audio.onpause=()=>{play.textContent='▶';play.setAttribute('aria-label','播放')};
-audio.ontimeupdate=()=>{seek.max=audio.duration||1;seek.value=audio.currentTime;$('#elapsed').textContent=fmt(audio.currentTime);$('#duration').textContent=fmt(audio.duration)};
-seek.oninput=()=>audio.currentTime=+seek.value;$('#previous').onclick=previous;$('#next').onclick=next;
-const volume=$('#volume'),volumeValue=$('#volumeValue');volume.oninput=()=>{audio.volume=+volume.value;volumeValue.textContent=`${Math.round(audio.volume*100)}%`;localStorage.setItem('player-volume',audio.volume)};const savedVolume=Number(localStorage.getItem('player-volume'));if(Number.isFinite(savedVolume)&&savedVolume>=0&&savedVolume<=1){audio.volume=savedVolume;volume.value=savedVolume;volumeValue.textContent=`${Math.round(savedVolume*100)}%`}
-function updateMedia(){if('mediaSession'in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:tracks[currentIndex]?.file.name||'我的播放清單',artist:'本機 MP3 播放器'});for(const [action,fn] of [['play',()=>audio.play()],['pause',()=>audio.pause()],['previoustrack',previous],['nexttrack',next],['seekbackward',()=>audio.currentTime=Math.max(0,audio.currentTime-15)],['seekforward',()=>audio.currentTime=Math.min(audio.duration||0,audio.currentTime+15)]])try{navigator.mediaSession.setActionHandler(action,fn)}catch{}}if(navigator.audioSession)try{navigator.audioSession.type='playback'}catch{}}
-render();
+function setControls(on){play.disabled=!on;seek.disabled=!on;$('#back').disabled=!on;$('#forward').disabled=!on}
+function mediaTitle(){return $('#now').textContent||'iPhone 背景播放器'}
+function updateMediaSession(){if(!('mediaSession' in navigator))return;try{navigator.mediaSession.metadata=new MediaMetadata({title:mediaTitle(),artist:'iPhone 背景播放器'})}catch{};const actions={play:()=>audio.play(),pause:()=>audio.pause(),seekbackward:()=>audio.currentTime=Math.max(0,audio.currentTime-15),seekforward:()=>audio.currentTime=Math.min(audio.duration||Infinity,audio.currentTime+15)};for(const [k,v] of Object.entries(actions))try{navigator.mediaSession.setActionHandler(k,v)}catch{}}
+async function loadMedia(url,title='網路串流'){
+  if(!/^https?:\/\//i.test(url)){setStatus('網址格式不正確。','err');return}
+  audio.pause();audio.src=url;audio.load();$('#now').textContent=title;$('#resolved').textContent=url;setControls(true);updateMediaSession();
+  try{await audio.play();setStatus('已交給 iPhone 播放器，現在可以測試鎖屏。','ok')}catch(e){setStatus('已載入。請按中間播放鍵開始。','ok')}
+}
+function findMedia(text){
+  const direct=text.match(/https?:\\?\/\\?\/[^"'<>\\s]+?\.m3u8(?:\?[^"'<>\\s]*)?/i);if(direct)return direct[0].replace(/\\\//g,'/').replace(/&amp;/g,'&');
+  const sid=text.match(/session_id["'\\s:=?&]+([A-Za-z0-9._~-]+)/i);if(sid)return `https://hls-auth.cloud.stream.co.jp/auth/index.m3u8?session_id=${encodeURIComponent(sid[1])}`;
+  return null;
+}
+$('#extract').onclick=async()=>{
+  const url=$('#pageUrl').value.trim();if(!url){setStatus('先貼影片頁網址。','err');return}
+  if(!/^https:\/\/kemomimirefle\.net\/video\//i.test(url)){setStatus('目前只針對 kemomimirefle.net/video/ 測試。','err');return}
+  setStatus('正在嘗試解析…','busy');
+  try{
+    const r=await fetch(url,{credentials:'omit',cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);const text=await r.text();const found=findMedia(text);if(!found)throw new Error('頁面中找不到 HLS 資訊');
+    $('#mediaUrl').value=found;await loadMedia(found,'Kemomimi Refle');
+  }catch(e){setStatus('網站阻止了直接解析，這不是你的 iPhone 壞掉。下一步需要取得該頁實際的 m3u8/session_id；目前仍可在下方直接貼 HLS 網址測試。','err')}
+};
+$('#loadUrl').onclick=()=>loadMedia($('#mediaUrl').value.trim(),'HLS / 網路音訊');
+play.onclick=async()=>{try{if(audio.paused)await audio.play();else audio.pause()}catch{setStatus('Safari 阻止自動播放，請再按一次播放。','err')}};
+$('#back').onclick=()=>audio.currentTime=Math.max(0,audio.currentTime-15);$('#forward').onclick=()=>audio.currentTime=Math.min(audio.duration||Infinity,audio.currentTime+15);
+audio.onplay=()=>{play.textContent='❚❚';play.setAttribute('aria-label','暫停')};audio.onpause=()=>{play.textContent='▶';play.setAttribute('aria-label','播放')};audio.ontimeupdate=()=>{seek.max=audio.duration||1;seek.value=audio.currentTime;$('#elapsed').textContent=fmt(audio.currentTime);$('#duration').textContent=fmt(audio.duration)};seek.oninput=()=>audio.currentTime=+seek.value;
+audio.onerror=()=>setStatus('這個媒體網址無法由 Safari 直接播放，可能已過期、需要授權，或來源有限制。','err');
+$('#picker').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;const u=URL.createObjectURL(f);$('#mediaUrl').value='';$('#resolved').textContent=f.name;audio.pause();audio.src=u;audio.load();$('#now').textContent=f.name;setControls(true);updateMediaSession();try{await audio.play()}catch{};};
+if(navigator.audioSession)try{navigator.audioSession.type='playback'}catch{}
 </script>
 </body>
 </html>
-
